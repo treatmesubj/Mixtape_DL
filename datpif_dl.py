@@ -29,6 +29,7 @@ mfile_ends = [i.end() for i in re.finditer(".mp3", pl)][1:]
 mfiles = dict(zip(mfile_starts, mfile_ends))
 
 song_links = [pl[key+3:val] for key,val in mfiles.items()]
+pprint(song_links)
 
 
 def substr(string, start_substr_substr, end_substr_substr):
@@ -39,13 +40,26 @@ def substr(string, start_substr_substr, end_substr_substr):
 
 base_url = substr(pl, "var trackPrefix", ";").split("'")[1]
 
+headers = {
+	"Host": "hw-mp3.datpiff.com",
+	"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0",
+	"Accept": "audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5",
+	"Accept-Language": "en-US,en;q=0.5",
+	"Range": "bytes=0-",
+	"Connection": "keep-alive",
+	"Referer": "https://embeds.datpiff.com/mixtape/967927?trackid=2&platform=desktop",
+	"Pragma": "no-cache",
+	"Cache-Control": "no-cache",
+	"TE": "Trailers"
+}
+
 for song_link in song_links:
 
 	full_link = f"{base_url}{song_link}"
-	print(full_link)
+	print(f"downloading {full_link}")
 
 	with open(f"{dir_loc}\\{song_link}", "wb") as f:
-		f.write(requests.get(f"{full_link}").content)
+		f.write(requests.get(f"{full_link}", headers=headers).content)
 
 
 input("done")
