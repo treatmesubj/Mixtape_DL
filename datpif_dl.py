@@ -3,6 +3,7 @@ from requests_html import HTML
 import os
 import re
 from pprint import pprint
+import win32api
 
 
 print("https://www.datpiff.com/Big-Sean-Detroit-mixtape.390127.html")
@@ -12,7 +13,7 @@ user_page = HTML(html=requests.get(link).text)
 artist = user_page.find("li.artist", first=True).text
 title = user_page.find("li.title", first=True).text
 
-dir_loc = f"C:\\Users\\jrock\\Music\\{artist}\\{title}"
+dir_loc = f"C:\\Users\\{win32api.GetUserName()}\\Music\\{artist}\\{title}"
 if not os.path.exists(dir_loc):
 	os.makedirs(dir_loc)
 
