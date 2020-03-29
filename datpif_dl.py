@@ -4,6 +4,7 @@ import os
 import re
 from pprint import pprint
 
+
 print("https://www.datpiff.com/Big-Sean-Detroit-mixtape.390127.html")
 link = input("datpiff mixtape link: ")
 
@@ -58,8 +59,14 @@ for song_link in song_links:
 	full_link = f"{base_url}{song_link}"
 	print(f"downloading {full_link}")
 
-	with open(f"{dir_loc}\\{song_link}", "wb") as f:
-		f.write(requests.get(f"{full_link}", headers=headers).content)
+	try:
+		
+		with open(f"{dir_loc}\\{song_link}", "wb") as f:
+			f.write(requests.get(f"{full_link}", headers=headers).content)
+	
+	except Exception as e:
+		print(e)
+		continue
 
 
 input("done")
