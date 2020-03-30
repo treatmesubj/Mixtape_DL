@@ -49,7 +49,7 @@ headers = {
 	"Accept-Language": "en-US,en;q=0.5",
 	"Range": "bytes=0-",
 	"Connection": "keep-alive",
-	"Referer": "https://embeds.datpiff.com/mixtape/967927?trackid=2&platform=desktop",
+	"Referer": f"https://embeds.datpiff.com/mixtape/{mixtape_code}",
 	"Pragma": "no-cache",
 	"Cache-Control": "no-cache",
 	"TE": "Trailers"
