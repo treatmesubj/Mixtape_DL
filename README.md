@@ -1,6 +1,6 @@
 # Datpiff Mixtape Downloader
 
-Not all mixtapes on datpiff have a download button. This script uses HTTP requests to request HTML to be parsed for media links so they can be requested and have their content to local files in the Music folder organized by artist and mixtape.
+Not all mixtapes on datpiff have a download button. This script uses HTTP requests to request HTML to be parsed for media links so they can be requested and have their content written to local files in the Music folder organized by artist and mixtape.
 
 ```
 Users
